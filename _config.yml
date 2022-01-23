@@ -18,9 +18,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Woobni's diary.                          # the main title
+title: woobni's diary.                          # the main title
 
-tagline: A student who dreams of becoming an AI engineer.   # it will display as the sub-title
+tagline: Connecting the dots.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -82,7 +82,7 @@ theme_mode: dark # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: /assets/img/내사진.jpeg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
