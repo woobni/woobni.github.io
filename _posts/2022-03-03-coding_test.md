@@ -123,3 +123,5 @@ def solution(record: List[str]) -> List[str]:
 다음은 actions 리스트를 순회한다. 본 풀이에서는 **사용자의 닉네임 정보를 userDB에서 관리하므로 userid만 알면 닉네임을 가져올 수 있다. → userDB[userid]**
 
 행동에 따라 출력할 문장을 answer 리스트에 추가한다.
+
+출력할 때는, 문자열 포매팅 방법 % 서식문자, str.format, f-string 이 세개 중 두 번째 방법을 사용한다.
