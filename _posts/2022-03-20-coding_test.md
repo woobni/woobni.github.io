@@ -1,0 +1,60 @@
+---
+title: (Python) 정렬 실전 문제
+date: 2022-03-20 23:15 +0900
+lastmod: 2022-03-20 23:15 +0900
+categories: [Coding Test]
+tags: [Coding Test]
+mermaid: true
+math: true
+---
+
+- 본 글은 “이것이 취업을 위한 코딩 테스트다 with 파이썬” 교재를 참고한 것임
+
+# 문제
+
+## 성적이 낮은 순서로 학생 출력하기
+
+![Untitled](/assets/img/2022-03-20-coding_test/Untitled.png)
+
+# 내풀이
+
+```python
+# 학생 수 N 입력받기
+n = int(input())
+# 학생의 이름과 성적 입력받기
+dict = {}
+for i in range(n):
+    name, score = input().split(' ')
+    dict[name] = int(score)
+
+# value값을 기준으로 정렬한 key "리스트"를 반환
+sorted_dict = sorted(dict, key=lambda x :dict[x])
+
+for i in range(len(sorted_dict)):
+    print(sorted_dict[i], end=' ')
+```
+
+간단하게 딕셔너리를 정의하여 value 값(성적 점수)을 기준으로 key(학생 이름)을 정렬하여 출력한다.
+
+sorted()를 함수를 사용하면 “리스트" 형태로 반환된다.
+
+# 교재풀이
+
+```python
+# N 을 입력받기
+n = int ( input ())
+# N 명의 학생 정보를 입력받아 리스트에 저장
+array = []
+for i in range ( n ):
+    input_data = input (). split () # 이름은 문자열 그대로, 점수는 정수형으로 변환하여 저장
+    array.append((input_data[ 0 ], int( input_data [ 1 ])))
+
+# 키( Key )를 이용하여, 점수를 기준으로 정렬
+array = sorted ( array , key = lambda student : student [ 1 ])
+
+# 정렬이 수행된 결과를 출력
+for student in array :
+    print( student [ 0 ], end = ' ')
+```
+
+내풀이와 비슷하지만 교재에서는 튜플을 리스트에 추가하며 이를 점수를 기준으로 정렬하여 문제를 해결한다.
