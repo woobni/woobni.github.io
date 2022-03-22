@@ -1,7 +1,7 @@
 ---
 title: (Python) 정렬 실전 문제
-date: 2022-03-20 23:15 +0900
-lastmod: 2022-03-20 23:15 +0900
+date: 2022-03-23 23:15 +0900
+lastmod: 2022-03-23 23:15 +0900
 categories: [Coding Test]
 tags: [Coding Test]
 mermaid: true
