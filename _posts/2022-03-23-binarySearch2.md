@@ -1,0 +1,139 @@
+---
+title: (Python) 이진 탐색 실전 문제1
+date: 2022-03-23 23:15 +0900
+lastmod: 2022-03-23 23:15 +0900
+categories: [Coding Test]
+tags: [Coding Test]
+mermaid: true
+math: true
+---
+
+> 본 글은  “이것이 취업을 위한 코딩 테스트다 with 파이썬” 교재를 참고한 것임
+> 
+
+# 문제
+
+![Untitled](/assets/img/2022-03-23-binarySearch2/Untitled.png)
+
+![Untitled](/assets/img/2022-03-23-binarySearch2/Untitled%201.png)
+
+![Untitled](/assets/img/2022-03-23-binarySearch2/Untitled%202.png)
+
+# 문제풀이
+
+## 내풀이
+
+```python
+# 데이터의 범위가 1,000,000 이하이기 때문에 계수 정렬을 사용 가능할 것 같음
+
+# 매장의 부품 개수 N 입력받기
+n = int(input())
+# 매장의 부품 종류 입렫받기
+parts = list(map(int, input().split(' ')))
+# 요청 받은 부품 개수 M 입력받기
+m = int(input())
+# 요청 받은 부품 종류 입렫받기
+req_parts = list(map(int, input().split(' ')))
+
+# 모든 범위를 포함하는 리스트 선언(모든 값은 0 으로 초기화)
+count = [0] * (max(parts) + 1)
+
+for i in range(len(parts)):
+	count[parts[i]] += 1 # 각 데이터에 해당하는 인덱스의 값 증가
+
+result = []
+for j in range(len(req_parts)):
+    if count[req_parts[j]] >= 1:
+        result.append('yes')
+    else:
+        result.append('no')
+
+print(result)
+```
+
+['no', 'yes', 'yes']
+
+문제에서 데이터의 범위가 1,000,000 이하이기 때문에 계수 정렬을 사용 가능할 것 같았다.
+
+모든 범위의 번호를 포함할 수 있는 크기의 리스트를 만든 뒤에, 특정 번호 부품이 있는지 확인하여 문제를 해결할 수 있었다.
+
+교재에서는 내풀이처럼 계수 정렬로 풀거나, 탐색을 통해 문제를 해결하거나, 또는 set()함수를 이용하여 문제를 해결한다.
+
+## 교재풀이
+
+```python
+# 이진 탐색
+
+# 이진 탐색 소스코드 구현(반복문)
+def binary_search ( array , target , start , end ):
+    while start <= end :
+        mid = ( start + end ) // 2
+        # 찾은 경우 중간점 인덱스 반환
+        if array [ mid ] == target :
+            return mid
+
+        # 중간점의 값보다 찾고자 하는 값이 작은 경우 왼쪽 확인
+        elif array [ mid ] > target :
+            end = mid - 1
+        # 중간점의 값보다 찾고자 하는 값이 큰 경우 오른쪽 확인
+        else :
+            start = mid + 1
+    return None
+
+# 매장의 부품 개수 N 입력받기
+n = int(input())
+# 매장의 부품 종류 입렫받기
+parts = list(map(int, input().split(' ')))
+# 요청 받은 부품 개수 M 입력받기
+m = int(input())
+# 요청 받은 부품 종류 입렫받기
+req_parts = list(map(int, input().split(' ')))
+
+# 이진 탐색을 수행하기 위해 사전에 정렬 수행
+parts.sort()
+
+# 손님이 확인 요청한 부품 번호를 하나씩 확인
+for i in req_parts :
+    # 해당 부품이 존재하는지 확인
+    result = binary_search ( parts , i , 0 , n - 1 )
+    if result != None :
+        print (' yes ', end = ' ')
+    else :
+        print (' no ', end = ' ')
+```
+
+이진 탐색으로 풀 경우, **먼저 매장 내 N개의 부품을 정렬**하고, 그 이후에 M개의 찾고자 하는 부품이 각각 매장이 존재하는지 탐색한다. 정렬되어 있기 때문에 이진 탐색이 가능하다.
+
+```python
+# set() 함수 이용
+
+# N (가게의 부품 개수)을 입력받기
+n = int ( input ()) 
+# 가게에 있는 전체 부품 번호를 입력받아서 집합( set ) 자료형에 기록
+parts = set ( map ( int , input (). split ()))
+
+# M (손님이 확인 요청한 부품 개수)을 입력받기
+m = int ( input ()) 
+# 손님이 확인 요청한 전체 부품 번호를 공백으로 구분하여 입력
+req_parts = list ( map ( int , input (). split ()))
+
+# 손님이 확인 요청한 부품 번호를 하나씩 확인
+for i in req_parts :
+    # 해당 부품이 존재하는지 확인
+    if i in parts :
+        print (' yes ', end = ' ')
+    else :
+        print (' no ', end = ' ')
+```
+
+이 문제는 단순히 특정한 수가 한 번이라도 등장했는지를 검사하면 되므로 집합 자료형을 초기화하는 함수인 set() 함수를 사용하여 문제를 해결할 수도 있다. 
+
+---
+
+## 시간 복잡도
+
+부품을 찾는 과정에서 시간 복잡도는 최악의 경우 $O(M*logN)$이고, 파이썬 정렬 라이브러리를 이용하여 N개의 부품을 정렬하기 위해서는 $O(N*logN)$의 연산이 필요하다.
+
+결과적으로 이진 탐색을 사용한 경우의 시간 복잡도는 $O((M+N)*logN)$이다.
+
+정렬의 시간 복잡도에 관해서는 [여기](https://woobni.github.io/posts/sorting1/)에서 확인할 수 있다.
