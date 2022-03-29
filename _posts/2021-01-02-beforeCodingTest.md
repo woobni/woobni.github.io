@@ -1,7 +1,7 @@
 ---
 title: 코딩테스트 공부하는 법
 date: 2021-01-02 23:36 +0900
-lastmod: 202-01-02 23:36 +0900
+lastmod: 2021-01-02 23:36 +0900
 categories: [Coding Test]
 tags: [Coding Test]
 mermaid: true
