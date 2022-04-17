@@ -3,7 +3,7 @@ title: (Python) 최단 경로 실전 문제 - 전보
 date: 2022-04-11 14:15 +0900
 lastmod: 2022-04-11 14:15 +0900
 categories: [Coding Test]
-tags: [Coding Test]
+tags: [Coding Test, shortest path]
 mermaid: true
 math: true
 ---
