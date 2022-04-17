@@ -1,0 +1,195 @@
+---
+title: (Python) [이진탐색] 백준 - 과자 나눠주기
+date: 2022-04-06 23:15 +0900
+lastmod: 2022-04-06 23:15 +0900
+categories: [Coding Test]
+tags: [Coding Test, Binary Search]
+mermaid: true
+math: true
+---
+
+[문제링크](https://www.acmicpc.net/problem/16401)
+
+정답 비율: 40.280%
+
+# 문제
+
+명절이 되면, 홍익이 집에는 조카들이 놀러 온다.  떼를 쓰는 조카들을 달래기 위해 홍익이는 막대 과자를 하나씩 나눠준다.
+
+조카들이 과자를 먹는 동안은 떼를 쓰지 않기 때문에, 홍익이는 조카들에게 최대한 긴 과자를 나눠주려고 한다.
+
+그런데 나눠준 과자의 길이가 하나라도 다르면 조카끼리 싸움이 일어난다. 따라서 반드시 모든 조카에게 같은 길이의 막대 과자를 나눠주어야 한다.
+
+M명의 조카가 있고 N개의 과자가 있을 때, 조카 1명에게 줄 수 있는 막대 과자의 최대 길이를 구하라.
+
+단, 막대 과자는 길이와 상관없이 여러 조각으로 나눠질 수 있지만, 과자를 하나로 합칠 수는 없다. 단, 막대 과자의 길이는 양의 정수여야 한다.
+
+## 입력
+
+첫째 줄에  조카의 수 M (1 ≤ M ≤ 1,000,000), 과자의 수 N (1 ≤ N ≤ 1,000,000)이 주어진다.
+
+둘째 줄에 과자 N개의 길이 L1, L2, ..., LN이 공백으로 구분되어 주어진다. 과자의 길이는 (1 ≤ L1, L2, ..., LN ≤ 1,000,000,000) 를 만족한다.
+
+## 출력
+
+첫째 줄에 조카 1명에게 줄 수 있는 막대 과자의 최대 길이를 출력한다.
+
+단, 모든 조카에게 같은 길이의 막대과자를 나눠줄 수 없다면, 0을 출력한다.
+
+## 예제 입력 1
+
+```
+3 10
+1 2 3 4 5 6 7 8 9 10
+
+```
+
+## 예제 출력 1
+
+```
+8
+```
+
+## 예제 입력 2
+
+```
+4 3
+10 10 15
+
+```
+
+## 예제 출력 2
+
+```
+7
+```
+
+---
+
+# 문제 풀이
+
+조카의 수와 과자의 수의 범위가 꽤 크므로 이진 탐색으로 문제를 풀어보자.
+
+아래와 같이 코드를 작성했는데 시간 초과가 나왔다.  cutting() 함수에서 재귀를 사용하는 과정 때문인 걸로 보인다.
+
+```python
+import sys
+
+# 조카의 수와 과자의 수 입력받기
+m, n = map(int, sys.stdin.readline().split())
+# 과자의 길이 공백으로 입력받기
+arr = list(map(int, sys.stdin.readline().split()))
+
+# 특정 높이로 과자를 잘랐을 때 몇명에게 줄 수 있는지 확인하는 함수. 재귀
+def cutting(array, h):
+    global count # 전역변수 count를 사용
+    if len(array) == 0:
+        return count
+
+    n_array = []
+    for i in range(len(array)):
+        temp = array[i] - h
+        if temp >= 0:     
+            count += 1
+            if temp >= h:
+                n_array.append(temp) # 시간 복잡도 줄이기 위해 새로 array 생성
+    return cutting(n_array, h)
+
+start = 0
+end = max(arr)
+h_list = []
+while start <= end:
+    h = ( start + end ) // 2
+
+    count = 0
+    # 조카수보다 과자가 부족한 경우 왼쪽 확인
+    if cutting(arr, h) < m:
+        end = h - 1
+
+    # 조카수보다 과자가 충분한 경우 오른쪽 확인
+    else : # cutting(arr, h) >= m
+        h_list.append(h) # 최소한 m이 나오면 되고 최대의 h를 구해야 하므로
+        start = h + 1
+
+print(h_list)
+print(max(h_list))
+```
+
+재귀를 사용하지 않고 cutting 함수를 구현했다. 이번엔 [ZeroDivisionError](https://www.acmicpc.net/help/rte)가 발생했다. cutting() 함수에서 count += snack // h 구하는 과정에서 h = 0으로 나누는 경우(모든 조카에게 같은 길이의 막대과자를 나눠줄 수 없는 경우)를 고려하지 않아서 그런 걸로 보인다. 
+
+```python
+import sys
+
+# 조카의 수와 과자의 수 입력받기
+m, n = map(int, sys.stdin.readline().split())
+# 과자의 길이 공백으로 입력받기
+snacks = list(map(int, sys.stdin.readline().split()))
+
+# 특정 높이로 과자를 잘랐을 때 몇명에게 줄 수 있는지 확인하는 함수
+def cutting(snacks, h):
+    count = 0
+    for snack in snacks:
+        count += snack // h
+    return count
+
+start = 0
+end = max(snacks)
+h_list = []
+while start <= end:
+    h = ( start + end ) // 2
+
+    # 조카수보다 과자가 부족한 경우 왼쪽 확인
+    elif cutting(snacks, h) < m:
+        end = h - 1
+
+    # 조카수보다 과자가 충분한 경우 오른쪽 확인
+    else : # cutting(arr, h) >= m
+        h_list.append(h) # 최소한 m이 나오면 되고 최대의 h를 구해야 하므로
+        start = h + 1
+
+# print(h_list)
+print(max(h_list))
+```
+
+### 최종 소스코드
+
+```python
+import sys
+
+# 조카의 수와 과자의 수 입력받기
+m, n = map(int, sys.stdin.readline().split())
+# 과자의 길이 공백으로 입력받기
+snacks = list(map(int, sys.stdin.readline().split()))
+
+# 특정 높이로 과자를 잘랐을 때 몇명에게 줄 수 있는지 확인하는 함수
+def cutting(snacks, h):
+    count = 0
+    if h == 0:
+        return count
+
+    for snack in snacks:
+        count += snack // h
+    return count
+
+start = 0
+end = max(snacks)
+h_list = []
+while start <= end:
+    h = ( start + end ) // 2
+
+    if cutting(snacks, h) == 0:
+        h_list.append(h)
+        break
+
+    # 조카수보다 과자가 부족한 경우 왼쪽 확인
+    elif cutting(snacks, h) < m:
+        end = h - 1
+
+    # 조카수보다 과자가 충분한 경우 오른쪽 확인
+    else : # cutting(arr, h) >= m
+        h_list.append(h) # 최소한 m이 나오면 되고 최대의 h를 구해야 하므로
+        start = h + 1
+
+# print(h_list)
+print(max(h_list))
+```

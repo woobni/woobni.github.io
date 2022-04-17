@@ -3,7 +3,7 @@ title: (Python) 이진 탐색 실전 문제1
 date: 2022-03-23 23:15 +0900
 lastmod: 2022-03-23 23:15 +0900
 categories: [Coding Test]
-tags: [Coding Test]
+tags: [Coding Test, Binary Search]
 mermaid: true
 math: true
 ---
