@@ -1,7 +1,7 @@
 ---
 title: (Python) [구현] Programmers - 삼각 달팽이
-date: 2022-04-03 23:36 +0900
-lastmod: 2022-04-03 23:36 +0900
+date: 2022-04-07 23:36 +0900
+lastmod: 2022-04-07 23:36 +0900
 categories: [Coding Test]
 tags: [Coding Test, Implementation Algorithm]
 mermaid: true
