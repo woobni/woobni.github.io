@@ -1,4 +1,12 @@
-# Recommendation System - 행렬 분해를 이용한 잠재요인 협업 필터링_SGD
+---
+title: Recommendation System - 행렬 분해를 이용한 잠재요인 협업 필터링_SGD
+date: 2021-05-02 23:36 +0900
+lastmod: 2021-05-02 23:36 +0900
+categories: [Recommendation System]
+tags: [Recommendation System]
+mermaid: true
+math: true
+---
 
 행렬 분해는 다차원 매트릭스를 저차원 매트릭스로 분해하는 기법으로 대표적으로 SVD(Singular Value Decomposition), NMF(Non-Negative Matrix Factorization) 등이 있다.
 
