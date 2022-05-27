@@ -16,7 +16,7 @@ math: true
 
 $r_{(u,i)}= p_u * q_i^t$
 
-![Untitled](/assets/img/2021-05-02-Recommendation%20System1/Untitled.png)
+![Untitled](/assets/img/2021-05-02-RecommendationSystem1/Untitled.png)
 
 # 확률적 경사하강법(SGD)을 이용한 행렬 분해
 
@@ -62,9 +62,9 @@ MF에서는 목적함수를 최소화하는 최적화 기법으로 SGD(Stochasti
 
 위의 비용 함수를 최소화 하기 위해 새롭게 업데이트 되는 $p$와 $q$ 는 다음과 같이 계산된다(p와 q에 대한 편미분을 통해 유도). 
 
-${\partial L \over \partial p_u} = {{\partial (r_{u,i} - p_u^Tq_i)^2} \over \partial p_u} + {{\partial \lambda {\lVert p_u \rVert}_2^2} \over \partial p_u} = -2(r_{u,i} - p_u^Tq_i)q_i + 2\lambda p_u = -2(e_{u,i}q_i - \lambda p_u)$
+${\partial L \over \partial p_u} = {\partial (r_{u,i} - p_u^Tq_i)^2 \over \partial p_u} + {\partial \lambda {\lVert p_u \rVert}_2^2 \over \partial p_u} = -2(r_{u,i} - p_u^Tq_i)q_i + 2\lambda p_u = -2(e_{u,i}q_i - \lambda p_u)$
 
-${\partial L \over \partial q_i} = {{\partial (r_{u,i} - p_u^Tq_i)^2} \over \partial q_i} + {{\partial \lambda {\lVert q_i \rVert}_2^2} \over \partial q_i} = -2(r_{u,i} - p_u^Tq_i)p_u + 2\lambda q_i = -2(e_{u,i}p_u - \lambda q_i)$
+${\partial L \over \partial q_i} = {\partial (r_{u,i} - p_u^Tq_i)^2 \over \partial q_i} + {\partial \lambda {\lVert q_i \rVert}_2^2 \over \partial q_i} = -2(r_{u,i} - p_u^Tq_i)p_u + 2\lambda q_i = -2(e_{u,i}p_u - \lambda q_i)$
 
 $p_{u} = p_u + \eta(e_{u,i} * q_i - \lambda * p_u)$
 
@@ -80,7 +80,7 @@ SGD는 모든 사용자(u) 잠재 벡터와 모든 아이템(i) 잠재 벡터에
 
 ---
 
-## ****Adding Biases****
+## **Adding Biases**
 
 사용자나 아이템별로 평점에 편향이 있을 수 있다. 예를 들어, 사용자 A는 점수를 후하게 주고 반면에 사용자 B는 점수를 짜게 준다던지, 아니면 어떤 영화는 유명한 명작이라 사용자의 취향과 별개로 점수가 높고, 어떤 영화는 그렇지 않을 수 있다. 아래 식을 보면, Adding Bias에서 예측 평점은 학습 데이터 전체 평점의 평균(μ)에 사용자가 가진 편향(b_u), 아이템이 가진 편향(b_i), 그리고 두 잠재벡터의 내적들로 구성되어 있다. 모든 평점의 평균을 더해주는 이유는 대부분의 아이템이 평균적으로 μ 정도의 값은 받는다는 것을 감안해주기 위함이다.
 
