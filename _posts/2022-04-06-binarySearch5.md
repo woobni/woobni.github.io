@@ -1,5 +1,5 @@
 ---
-title: (Python) [이진탐색] 백준 - 과자 나눠주기
+title: (Python)[백준][이진탐색] 과자 나눠주기
 date: 2022-04-06 23:15 +0900
 lastmod: 2022-04-06 23:15 +0900
 categories: [Coding Test]

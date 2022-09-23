@@ -1,5 +1,5 @@
 ---
-title: (Python) [구현] Programmers - 삼각 달팽이
+title: (Python)[Programmers][구현] 삼각 달팽이
 date: 2022-04-07 23:36 +0900
 lastmod: 2022-04-07 23:36 +0900
 categories: [Coding Test]

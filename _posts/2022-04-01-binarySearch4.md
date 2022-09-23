@@ -1,5 +1,5 @@
 ---
-title: (Python) [이진탐색] 백준 - 숫자 카드
+title: (Python)[백준][이진탐색] 숫자 카드
 date: 2022-04-01 22:15 +0900
 lastmod: 2022-04-01 22:15 +0900
 categories: [Coding Test]

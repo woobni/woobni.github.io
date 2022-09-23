@@ -1,5 +1,5 @@
 ---
-title: Recommendation System - 행렬 분해를 이용한 잠재요인 협업 필터링_SGD
+title: (Recommendation System) 행렬 분해를 이용한 잠재요인 협업 필터링, SGD
 date: 2021-05-02 23:36 +0900
 lastmod: 2021-05-02 23:36 +0900
 categories: [Recommendation System]

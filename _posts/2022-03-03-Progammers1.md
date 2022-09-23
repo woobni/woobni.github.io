@@ -1,5 +1,5 @@
 ---
-title: (Python) Progammers - 오픈채팅방
+title: (Python)[Progammers] 오픈채팅방
 date: 2022-03-03 23:35 +0900
 lastmod: 2022-03-03 23:35 +0900
 categories: [Coding Test]
