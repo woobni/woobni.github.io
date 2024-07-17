@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="en" data-mode="light" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="(Python) 정규표현식 메타 문자 정리" /><meta property="og:locale" content="en" /><meta name="description" content="1. [ ]" /><meta property="og:description" content="1. [ ]" /><link rel="canonical" href="https://woobni.github.io/posts/post230212/" /><meta property="og:url" content="https://woobni.github.io/posts/post230212/" /><meta property="og:site_name" content="woobni’s diary." /><meta property="og:type" content="article" /><meta property="article:published_time" content="2023-02-12T19:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="(Python) 정규표현식 메타 문자 정리" /> <script type="application/ld+json"> {"description":"1. [ ]","url":"https://woobni.github.io/posts/post230212/","@type":"BlogPosting","headline":"(Python) 정규표현식 메타 문자 정리","dateModified":"2023-02-12T19:00:00+09:00","datePublished":"2023-02-12T19:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobni.github.io/posts/post230212/"},"@context":"https://schema.org"}</script><title>(Python) 정규표현식 메타 문자 정리 | woobni's diary.</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="woobni's diary."><meta name="application-name" content="woobni's diary."><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/%EB%82%B4%EC%82%AC%EC%A7%84.jpeg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">woobni's diary.</a></div><div class="site-subtitle font-italic">Connecting the dots.</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/woobni" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['woobni0357','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>(Python) 정규표현식 메타 문자 정리</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>(Python) 정규표현식 메타 문자 정리</h1><div class="post-meta text-muted"><div> By <em> <a href="https://github.com/woobni">woobni</a> </em></div><div class="d-flex"><div> <span> Posted <em class="timeago" date="2023-02-12 19:00:00 +0900" data-toggle="tooltip" data-placement="bottom" title="Sun, Feb 12, 2023, 7:00 PM +0900" >Feb 12, 2023</em> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1827 words"> <em>10 min</em> read</span></div></div></div><div class="post-content"><h2 id="1---">1. <strong>[ ]</strong> <a href="#1---" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>문자 클래스로 만들어지는 정규식은, [ ]로 둘러쌓인 내부의 문자열과 매치되는 것이라는 의미</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># r은 Raw String (원시 문자열)을 나타내는 접두사 
+# 파이썬에서 Raw String은 백슬래시 \를 이스케이프 시키지 않고 그대로 사용할 수 있도록 해줌
+</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'[aiueo]'</span>
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'apple'</span><span class="p">,</span> <span class="s">'banana'</span><span class="p">,</span> <span class="s">'aaii'</span><span class="p">,</span> <span class="s">'bbb'</span><span class="p">,</span> <span class="s">'ccc'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘apple’ matches the pattern. [‘a’, ‘e’] ‘banana’ matches the pattern. [‘a’, ‘a’, ‘a’] ‘aaii’ matches the pattern. ‘banana’ matches the pattern. [‘a’, ‘a’, ‘a’] ‘aaii’ matches the pattern. [‘a’, ‘a’, ‘i’, ‘i’] ‘bbb’ does not match the pattern. ‘ccc’ does not match the pattern.</p><ul><li><p>자주 사용되는 문자클래스는 아래와 같이 별도의 표기법으로 사용될 수있음</p><p><img data-src="/assets/img/2023-02-12-post230212/Untitled.png" alt="Untitled" data-proofer-ignore></p></ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'[\d]'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'2a'</span><span class="p">,</span> <span class="s">'3'</span><span class="p">,</span> <span class="s">'aaa'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘a’ does not match the pattern. ‘2a’ matches the pattern. [‘2’] ‘3’ matches the pattern. [‘3’] ‘aaa’ does not match the pattern.</p><ul><li>문자클래스 내부에서 쓰이는 ^ 는 뒤에서 알아볼 메타문자와는 다른의미인, not의 의미를 가지고 있음</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'[^aiueo]'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'apple'</span><span class="p">,</span> <span class="s">'banana'</span><span class="p">,</span> <span class="s">'aaii'</span><span class="p">,</span> <span class="s">'bbb'</span><span class="p">,</span> <span class="s">'ccc'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span> <span class="c1"># a,i,u,e,o가 아닌 모든 문자를 찾음. 있으면 참
+</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘apple’ matches the pattern. [‘p’, ‘p’, ‘l’] ‘banana’ matches the pattern. [‘b’, ‘n’, ‘n’] ‘aaii’ does not match the pattern. ‘bbb’ matches the pattern. [‘b’, ‘b’, ‘b’] ‘ccc’ matches the pattern. [‘c’, ‘c’, ‘c’]</p><h2 id="2--dot">2. <strong>. (Dot)</strong> <a href="#2--dot" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>.(Dot) 은 줄바꿈 문자인 \n을 제외한 모든 하나의 문자와 매치되는 것을 의미</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'a.b'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'aasdfb'</span><span class="p">,</span> <span class="s">'asb'</span><span class="p">,</span> <span class="s">'a2b'</span><span class="p">,</span> <span class="s">'sdfba'</span><span class="p">,</span> <span class="s">'ab'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘aasdfb’ does not match the pattern. ‘asb’ matches the pattern. [‘asb’] ‘a2b’ matches the pattern. [‘a2b’] ‘sdfba’ does not match the pattern. ‘ab’ does not match the pattern.</p><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'a...b'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'aasdfb'</span><span class="p">,</span> <span class="s">'asb'</span><span class="p">,</span> <span class="s">'a2b'</span><span class="p">,</span> <span class="s">'sdfba'</span><span class="p">,</span> <span class="s">'ab'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘aasdfb’ matches the pattern. [‘asdfb’] ‘asb’ does not match the pattern. ‘a2b’ does not match the pattern. ‘sdfba’ does not match the pattern. ‘ab’ does not match the pattern.</p><h2 id="3-">3. ***** <a href="#3-" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>*는 반복을 나타내는 메타문자로써, 해당 메타문자 앞의 글자가 0번이상 반복되는 모든 문자열과 매치</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'go*gle'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'ggle'</span><span class="p">,</span> <span class="s">'gogle'</span><span class="p">,</span> <span class="s">'google'</span><span class="p">,</span> <span class="s">'gooooogle'</span><span class="p">,</span> <span class="s">'goooooog'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘ggle’ matches the pattern. [‘ggle’] ‘gogle’ matches the pattern. [‘gogle’] ‘google’ matches the pattern. [‘google’] ‘gooooogle’ matches the pattern. [‘gooooogle’] ‘goooooog’ does not match the pattern.</p><h2 id="4-">4. <strong>+</strong> <a href="#4-" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>+는 *과 같은 반복을 나타내는 메타문자. *는 다르게 앞의 글자가 0번을 제외한, 1번이상 반복되는 모든 문자열과 매치</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'go+gle'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'ggle'</span><span class="p">,</span> <span class="s">'gogle'</span><span class="p">,</span> <span class="s">'google'</span><span class="p">,</span> <span class="s">'gooooogle'</span><span class="p">,</span> <span class="s">'goooooog'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘ggle’ does not match the pattern. ‘gogle’ matches the pattern. [‘gogle’] ‘google’ matches the pattern. [‘google’] ‘gooooogle’ matches the pattern. [‘gooooogle’] ‘goooooog’ does not match the pattern.</p><h2 id="5-mn">5. <strong>{m,n}</strong> <a href="#5-mn" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>{m,n}또한 반복을 나타내는 메타문자. 위와는 다르게 반복횟수를 m과 n으로 정할 수 있음. 즉, 앞의 문자가 m번 이상 n번이하 반복되는 모든 문자열과 매치</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'go{1,3}gle'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'ggle'</span><span class="p">,</span> <span class="s">'gogle'</span><span class="p">,</span> <span class="s">'google'</span><span class="p">,</span> <span class="s">'gooooogle'</span><span class="p">,</span> <span class="s">'goooooog'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘ggle’ does not match the pattern. ‘gogle’ matches the pattern. [‘gogle’] ‘google’ matches the pattern. [‘google’] ‘gooooogle’ does not match the pattern. ‘goooooog’ does not match the pattern.</p><h2 id="6-">6. ? <a href="#6-" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>? 는 앞의 문자가 0~1번 반복되는 모든 문자열과 매치</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'go?gle'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'ggle'</span><span class="p">,</span> <span class="s">'gogle'</span><span class="p">,</span> <span class="s">'google'</span><span class="p">,</span> <span class="s">'gooooogle'</span><span class="p">,</span> <span class="s">'goooooog'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘ggle’ matches the pattern. [‘ggle’] ‘gogle’ matches the pattern. [‘gogle’] ‘google’ does not match the pattern. ‘gooooogle’ does not match the pattern. ‘goooooog’ does not match the pattern.</p><h2 id="7-">7. <strong>|</strong> <a href="#7-" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li><div class="table-wrapper"><table><tbody><tr><td>해당<td>메타문자는 a<td>b 와 같은 형식으로 사용되며 a 또는 b와 매치되는 문자열을 반환</table></div></ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'b|s'</span> 
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'aasdfb'</span><span class="p">,</span> <span class="s">'asb'</span><span class="p">,</span> <span class="s">'a2b'</span><span class="p">,</span> <span class="s">'sdfba'</span><span class="p">,</span> <span class="s">'ab'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘aasdfb’ matches the pattern. [’s’, ‘b’] ‘asb’ matches the pattern. [’s’, ‘b’] ‘a2b’ matches the pattern. [‘b’] ‘sdfba’ matches the pattern. [’s’, ‘b’] ‘ab’ matches the pattern. [‘b’]</p><h2 id="8-">8. <strong>^</strong> <a href="#8-" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>^는 문자열의 맨처음을 의미하는 메타문자. 문자클래서 내부에서 not의 의미로 사용되기도 하므로 혼동되지 않도록 주의. 정규식으로 찾고자 하는 문자열의 앞에 입력</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'^apple'</span>
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'apple'</span><span class="p">,</span> <span class="s">'banana'</span><span class="p">,</span> <span class="s">'apple mango'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘apple’ matches the pattern. [‘apple’] ‘banana’ does not match the pattern. ‘apple mango’ matches the pattern. [‘apple’]</p><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'[^apple]'</span> <span class="c1"># 
+</span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'apple'</span><span class="p">,</span> <span class="s">'banana'</span><span class="p">,</span> <span class="s">'apple mango'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span> <span class="c1"># a,p,l,e가 아닌 모든 문자를 찾음. 있으면 참
+</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘apple’ does not match the pattern. ‘banana’ matches the pattern. [‘b’, ‘n’, ‘n’] ‘apple mango’ matches the pattern. [’ ‘, ‘m’, ‘n’, ‘g’, ‘o’]</p><h2 id="9-">9. <strong>$</strong> <a href="#9-" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>$는 ^와 반대로 문자열의 맨 마지막을 의미하는 메타문자. ^와는 다르게 매치할 문자열의 뒤에 입력</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'apple$'</span>
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">'apple'</span><span class="p">,</span> <span class="s">'banana'</span><span class="p">,</span> <span class="s">'apple mango'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' matches the pattern. </span><span class="se">\n</span><span class="s"> </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"'</span><span class="si">{</span><span class="n">string</span><span class="si">}</span><span class="s">' does not match the pattern."</span><span class="p">)</span>
+</pre></table></code></div></div><p>‘apple’ matches the pattern. [‘apple’] ‘banana’ does not match the pattern. ‘apple mango’ does not match the pattern.</p><h2 id="10-a-z">10. \A, \Z <a href="#10-a-z" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><hr /><ul><li>\A는 기본적으로 ^와 같이 문자열의 맨 처음을 의미하는 메타문자<li>하지만 다른점이 있다면 우리가 re.MULTILINE이라는 컴파일 옵션을 사용했을 때, ^는 라인별 문자열의 맨처음을 의미하지만 \A는 라인별이 아닌 문자열 전체에서의 맨 처음을 의미</ul><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">"^python\s\w+"</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="s">"""python one
+life is too short
+python two
+you need python
+python three"""</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></table></code></div></div><p>[‘python one’]</p><p><code class="language-plaintext highlighter-rouge">^</code> 메타 문자를 문자열 전체의 처음이 아니라 각 라인의 처음으로 인식시키고 싶은 경우,</p><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">"^python\s\w+"</span><span class="p">,</span> <span class="n">re</span><span class="p">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="s">"""python one
+life is too short
+python two
+you need python
+python three"""</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></table></code></div></div><p>[‘python one’, ‘python two’, ‘python three’]</p><ul><li>\Z는 기본적으로 $와 같이 문자열의 맨 뒤를 의미하는 메타문자<li>하지만 다른점은 \A와 같이, re.MULTILINE이라는 컴파일 옵션을 사용했을 때, $는 라인별 문자열의 맨뒤를 의미하지만 \Z는 라인별이 아닌 문자열 전체에서의 맨 뒤를 의미</ul></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/python/'>Python</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/python/" class="post-tag no-text-decoration" >Python</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=(Python) 정규표현식 메타 문자 정리 - woobni's diary.&url=https://woobni.github.io/posts/post230212/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=(Python) 정규표현식 메타 문자 정리 - woobni's diary.&u=https://woobni.github.io/posts/post230212/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=https://woobni.github.io/posts/post230212/&text=(Python) 정규표현식 메타 문자 정리 - woobni's diary." data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" data-title-succeed="Link copied successfully!"> </i> </span></div></div><script src="https://utteranc.es/client.js" repo="woobni/woobni.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async> </script></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">Recently Updated</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/post240516/">(kube-prometheus-stack) Prometheus 기반 모니터링 스택 구축</a><li><a href="/posts/post240524/">(kube-prometheus-stack) Prometheus 기반 모니터링 스택 Thanos 연동</a><li><a href="/posts/post240515/">PV, PVC의 동적 프로비저닝을 위한 NFS CSI 드라이버 구성</a><li><a href="/posts/post240402/">자바스크립트 런타임</a><li><a href="/posts/post230927/">도커 엔진</a></ul></div><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/codingtest/">CodingTest</a> <a class="post-tag" href="/tags/deep-learning/">Deep Learning</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/kubernetes/">Kubernetes</a> <a class="post-tag" href="/tags/javascript/">Javascript</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/contents-caching/">Contents Caching</a> <a class="post-tag" href="/tags/network/">Network</a> <a class="post-tag" href="/tags/reinforcement-learning/">Reinforcement Learning</a> <a class="post-tag" href="/tags/docker/">Docker</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">Contents</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="tail-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/post240524/"><div class="card-body"> <em class="timeago small" date="2024-05-24 19:00:00 +0900" >May 24</em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>(kube-prometheus-stack) Prometheus 기반 모니터링 스택 Thanos 연동</h3><div class="text-muted small"><p> 본 글은 ‘(kube-prometheus-stack) Prometheus 기반 모니터링 스택 구축’ 포스팅 이후 진행됨 Background K8S 클러스터에 구성된 Prometheus 기반 모니터링 스택의 Prometheus HA, 메트릭 장기 저장, global view를 구현하기 위해 Thanos 스택 연동 각 Thanos 컴...</p></div></div></a></div><div class="card"> <a href="/posts/post240516/"><div class="card-body"> <em class="timeago small" date="2024-05-16 19:00:00 +0900" >May 16</em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>(kube-prometheus-stack) Prometheus 기반 모니터링 스택 구축</h3><div class="text-muted small"><p> 본 글은 ‘Hyper-v 환경에서 k8s 클러스터 구축’ 포스팅 이후 진행함 Background SaaS 제품을 사용하는 테넌트가 추가됨에 따른 환경 배포 및 관리가 불편해져 기존의 베어메탈 환경에서 쿠버네티스로 전환 기존 Bare-metal 환경에 직접 설치된 모니터링 스택들을 쿠버네티스 클러스터 위에 구축 K8S 클러스터의...</p></div></div></a></div><div class="card"> <a href="/posts/post240515/"><div class="card-body"> <em class="timeago small" date="2024-05-15 19:00:00 +0900" >May 15</em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>PV, PVC의 동적 프로비저닝을 위한 NFS CSI 드라이버 구성</h3><div class="text-muted small"><p> Prerequisite NFS 서버/클라이언트 설정 nfs-provisioner 구성 1 2 3 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/ helm repo update 1 2...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/post230102/" class="btn btn-outline-primary" prompt="Older"><p>(AWS) AWS 기초 개념</p></a> <a href="/posts/post230224/" class="btn btn-outline-primary" prompt="Newer"><p>(Hadoop) Abstract of Zookeeper and ZKFC</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center text-muted"><div class="footer-left"><p class="mb-0"> © 2024 <a href="https://github.com/woobni">woobni</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/codingtest/">CodingTest</a> <a class="post-tag" href="/tags/deep-learning/">Deep Learning</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/kubernetes/">Kubernetes</a> <a class="post-tag" href="/tags/javascript/">Javascript</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/contents-caching/">Contents Caching</a> <a class="post-tag" href="/tags/network/">Network</a> <a class="post-tag" href="/tags/reinforcement-learning/">Reinforcement Learning</a> <a class="post-tag" href="/tags/docker/">Docker</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><script src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js"></script> <script> $(function() { function updateMermaid(event) { if (event.source === window && event.data && event.data.direction === ModeToggle.ID) { const mode = event.data.message; if (typeof mermaid === "undefined") { return; } let expectedTheme = (mode === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* Re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } let initTheme = "default"; if ($("html[data-mode=dark]").length > 0 || ($("html[data-mode]").length == 0 && window.matchMedia("(prefers-color-scheme: dark)").matches ) ) { initTheme = "dark"; } let mermaidConf = { theme: initTheme /* <default|dark|forest|neutral> */ }; /* Markdown converts to HTML */ $("pre").has("code.language-mermaid").each(function() { let svgCode = $(this).children().html(); $(this).addClass("unloaded"); $(this).after(`<div class=\"mermaid\">${svgCode}</div>`); }); mermaid.initialize(mermaidConf); window.addEventListener("message", updateMermaid); }); </script><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script> /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */ MathJax = { tex: { inlineMath: [ /* start/end delimiter pairs for in-line math */ ['$','$'], ['\\(','\\)'] ], displayMath: [ /* start/end delimiter pairs for display math */ ['$$', '$$'], ['\\[', '\\]'] ] } }; </script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script>
